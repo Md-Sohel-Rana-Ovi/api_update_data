@@ -1,0 +1,56 @@
+<odoo>
+  <data>
+    <!-- explicit list view definition -->
+
+    <record model="ir.ui.view" id="api_update_data_list">
+      <field name="name">information.data</field>
+      <field name="model">information.data</field>
+      <field name="arch" type="xml">
+        <tree>
+          <field name="name"/>
+          <field name="age"/>
+          <field name="roll"/>
+        </tree>
+      </field>
+    </record>
+
+      <!-- Form View -->
+        <record id="api_update_data_form" model="ir.ui.view">
+            <field name="name">information.data.form.view</field>
+            <field name="model">information.data</field>
+            <field name="priority" eval="7"/>
+            <field name="arch" type="xml">
+                <form string=" Student Information Form">
+                    <sheet string="Student Information">
+                        <group>
+                            <group>
+                                <field name="name"/>
+                                <field name="age"/>
+                                <field name="roll"/>
+                            </group>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <record id="action_information_data" model="ir.actions.act_window">
+            <field name="name">Information Data</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">information.data</field>
+            <field name="domain">[]</field>
+            <field name="view_mode">tree,form</field>
+            <field name="view_id" ref="api_update_data_list"/>
+        </record>
+
+
+    <!-- Top menu item -->
+
+    <menuitem name="API DATA" id="api_information_root"/>
+
+    <!-- menu categories -->
+
+    <menuitem name="Information" id="api_information" parent="api_information_root"  action= "action_information_data"/>
+
+  </data>
+</odoo>
